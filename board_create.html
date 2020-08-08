@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>J13|J14 IloveSchool</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row p-3 text-primary rounded" style="text-align: center;">
+      <div class="col-11">
+        <img src="img/logo.png" alt="logo" width="200" height="70">
+      </div>
+    </div>
+    <div class="mb-2 bg-primary text-white" style="text-align: center;">
+      <p>&nbsp</p>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <!-- 프로필 -->
+        <div class="card">
+          <img
+            src="https://user-images.githubusercontent.com/42710591/89651430-e3997800-d8fe-11ea-8fc4-892c6fc429ab.JPG"
+            class="card-img-top" alt="유저 사진">
+          <div class="card-body">
+            <h5 class="card-title">홍길동 </h5>
+            <p class="card-text ">
+              회원 정보<br>
+              OOO학교<br>
+              상점 +75 <br>
+            </p>
+            <button type="button" class="btn btn-primary">프로필 수정</button>
+            <div style="margin-top:5px;">
+              <button type="button" class="btn btn-outline-primary btn-sm">로그아웃</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <!-- 제목 -->
+        <form action="URL" method="post">
+          <div class="form-group">
+            <input type="text" class="form-control" id="title" placeholder="제목을 입력해 주세요.">
+          </div>
+          <!-- 내용 작성-->
+          <div class="form-group">
+            <textarea class="form-control" id="write-contents" rows="19" placeholder="내용을 입력해 주세요."></textarea>
+          </div>
+          <input type="submit" class="btn btn-primary btn-sm" value="글쓰기">
+        </form>
+      </div>
+      <!--학교 랭킹-->
+      <div class="col-2">
+        <p>친절 학교 랭킹</p>
+        <table class="table shadow-sm p-3 mb-5 bg-white rounded">
+          <thead>
+            <tr>
+              <th scope="col">학교</th>
+              <th scope="col">점수</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>부스트초</td>
+              <td>99</td>
+            </tr>
+            <tr>
+              <td>캠프초</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>커넥트중</td>
+              <td>34</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>친절 유저 랭킹</p>
+        <table class="table shadow-sm p-3 mb-5 bg-white rounded">
+          <thead>
+            <tr>
+              <th scope="col">닉네임</th>
+              <th scope="col">점수</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>홍길동</td>
+              <td>43</td>
+            </tr>
+            <tr>
+              <td>홍길동2</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td>홍길동3</td>
+              <td>14</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+<footer class="jombotron text-center mt-5 mb-0">
+  <div class="footer-copyright text-center py-3">Copyright © 2020 BOOST CAMP All rights reserved.</div>
+</footer>
+
+</html>

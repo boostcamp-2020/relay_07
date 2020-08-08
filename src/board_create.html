@@ -15,20 +15,19 @@
   <div class="container">
     <div class="row p-3 text-primary rounded" style="text-align: center;">
       <div class="col-11">
-        <H1>I Love School</H1>
-      </div>
-      <div class="col-1">
-        <p class=" btn btn-outline-primary btn-sm"> log out</p>
+        <img src="img/logo.png" alt="logo" width="200" height="70">
       </div>
     </div>
     <div class="mb-2 bg-primary text-white" style="text-align: center;">
       <p>&nbsp</p>
     </div>
     <div class="row">
-      <!-- 프로필 설정 -->
       <div class="col-2">
+        <!-- 프로필 -->
         <div class="card">
-          <img src="https://user-images.githubusercontent.com/42710591/89651430-e3997800-d8fe-11ea-8fc4-892c6fc429ab.JPG" class="card-img-top" alt="유저 사진">
+          <img
+            src="https://user-images.githubusercontent.com/42710591/89651430-e3997800-d8fe-11ea-8fc4-892c6fc429ab.JPG"
+            class="card-img-top" alt="유저 사진">
           <div class="card-body">
             <h5 class="card-title">홍길동 </h5>
             <p class="card-text ">
@@ -36,7 +35,10 @@
               OOO학교<br>
               상점 +75 <br>
             </p>
-            <a href="#" class="btn btn-primary">프로필 수정</a>
+            <button type="button" class="btn btn-primary">프로필 수정</button>
+            <div style="margin-top:5px;">
+              <button type="button" class="btn btn-outline-primary btn-sm">로그아웃</button>
+            </div>
           </div>
         </div>
       </div>
@@ -46,11 +48,11 @@
           <div class="form-group">
             <input type="text" class="form-control" id="title" placeholder="제목을 입력해 주세요.">
           </div>
-        <!-- 내용 작성-->
+          <!-- 내용 작성-->
           <div class="form-group">
-            <textarea class="form-control" id="write-contents" rows="17" placeholder="내용을 입력해 주세요."></textarea>
+            <textarea class="form-control" id="write-contents" rows="19" placeholder="내용을 입력해 주세요."></textarea>
           </div>
-          <input type="submit" value="글쓰기">
+          <input type="submit" class="btn btn-primary btn-sm" value="글쓰기">
         </form>
       </div>
       <!--학교 랭킹-->
@@ -104,9 +106,9 @@
       </div>
     </div>
   </div>
-  <div class="fixed-bottom text-center text-primary bg-light">
-    <h4>BOOST CAMP</h4>
-  </div>
 </body>
+<footer class="jombotron text-center mt-5 mb-0">
+  <div class="footer-copyright text-center py-3">Copyright © 2020 BOOST CAMP All rights reserved.</div>
+</footer>
 
 </html>

@@ -3,22 +3,35 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>로그인 페이지</title>
+  <title>Login</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
-
 <body>
   <div class="container">
     <div class="row p-3 text-primary rounded" style="text-align: center;">
       <div class="col-11">
-        <H1>I Love School</H1>
-      </div>
-      <div class="col-1">
-        <p class=" btn btn-outline-primary btn-sm"> log out</p>
+        <img src="img/logo.png" alt="logo" width="200" height="70">
       </div>
     </div>
     <div class="row">
+      <!-- 로그인 -->
+      <form class="col-4 border border-light shadow shadow-lg rounded" style="margin: auto;">
+        <p class="text-center ">로그인</p>
+        <div class="form-row">
+          <label for="inputId">아이디</label>
+          <input type="text" class="form-control" id="inputId">
+        </div>
+        <div class="form-row">
+          <label for="inputPassword">비밀번호</label>
+          <input type="password" class="form-control" id="inputPassword">
+        </div>
+        <br>
+        <div style="margin: 5px;">
+          <button type="submit" class="btn btn-primary btn-lg btn-block">로그인</button>
+        </div>
+      </form>
+      <!-- 회원가입 -->
       <form class="col-5 border border-light shadow shadow-lg rounded" style="margin: auto;">
         <p class="text-center">회원가입</p>
         <div class="form-row">
@@ -39,29 +52,13 @@
         </div>
         <br>
         <div style="margin: 5px;">
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
-        </div>
-      </form>
-      <form class="col-4 border border-light shadow shadow-lg rounded" style="margin: auto;">
-        <p class="text-center ">로그인</p>
-        <div class="form-row">
-          <label for="inputId">아이디</label>
-          <input type="text" class="form-control" id="inputId">
-        </div>
-        <div class="form-row">
-          <label for="inputPassword">비밀번호</label>
-          <input type="password" class="form-control" id="inputPassword">
-        </div>
-        <br>
-        <div style="margin: 5px;">
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">회원 가입</button>
         </div>
       </form>
     </div>
   </div>
-  <div class="fixed-bottom text-center text-primary bg-light">
-    <h4>BOOST CAMP</h4>
-  </div>
 </body>
-
+<footer class="jombotron text-center mt-5 mb-0">
+    <div class="footer-copyright text-center py-3">Copyright © 2020 BOOST CAMP All rights reserved.</div>
+</footer>
 </html>

@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 
 const DB_INFO = {
-  host: "192.168.99.100",
-  port: "9876",
+  host: "127.0.0.1",
+  port: "3306",
   user: "root",
   password: "password",
   database: "mydb",
@@ -10,8 +10,8 @@ const DB_INFO = {
 };
 const sequelize = new Sequelize("mydb", "root", "password", {
   dialect: "mysql",
-  host: "192.168.99.100",
-  port : "9876",
+  host: "127.0.0.1",
+  port : "3306",
   logging: false,
 });
 

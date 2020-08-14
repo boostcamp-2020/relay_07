@@ -10,6 +10,6 @@ router.post("/getUser", authMiddleware.isLogin, userController.getUser);
 
 router.post("/updateUser", authMiddleware.isLogin, userController.updateUser);
 
-router.post("/updateThumbnail", authMiddleware.isLogin, userController.updateThumbnail);
+router.post("/edit-profile", authMiddleware.isLogin, userController.updateThumbnail);
 
 module.exports = router;

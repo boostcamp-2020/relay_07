@@ -40,16 +40,15 @@ exports.postUpdateUser = async (req, res, next) => {
   };
   
   exports.updateThumbnail = async (req, res) => {
-      const { userId, newThumbnail } = req.body;
+      const userId = req.session.user.id;
+      const { thumbnail } = req.body;
       try{
-        await sequelize.query(`UPDATE user SET thumbnail=${newThumbnail} WHERE id=${userId}`);
+        await sequelize.query(`UPDATE user SET thumbnailURL=${thumbnail} WHERE id=${userId}`);
         console.log("썸네일 변경!");
-        return res.json({
-            success:true
-        });
+        res.redirect("/posts");
       }catch(err){
           console.log(err);
-          res.redirect('/');
+          res.redirect('/posts');
       }
   }
 

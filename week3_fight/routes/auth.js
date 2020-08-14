@@ -15,7 +15,7 @@ router.post("/login", authMiddleware.isLogin, authController.postLogin);
 router.post("/signup", authMiddleware.isLogin, authController.postSignup);
 
 router.post(
-  "/edit-profile",
+  "/updateProfile",
   authMiddleware.isLogin,
   authController.editThumbnail
 );

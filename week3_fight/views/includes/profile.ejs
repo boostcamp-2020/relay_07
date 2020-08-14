@@ -15,14 +15,14 @@
 </script>
 <div class="col-2">
   <div class="card">
-    <%= if(user.thumbnail){ %>
+    <%= if(!user.thumbnailURL){ %>
     <img
       src="https://user-images.githubusercontent.com/42710591/89651430-e3997800-d8fe-11ea-8fc4-892c6fc429ab.JPG"
       class="card-img-top"
       alt="유저 사진"
     />
     <%} else{ %>
-    <img src="<%= user.thumbnail %>" class="card-img-top" alt="유저 사진" />
+    <img src="<%= user.thumbnailURL %>" class="card-img-top" alt="유저 사진" />
     <%}%>
     <div class="card-body text-center">
       <h5
@@ -82,7 +82,7 @@
             <div class="container text-left">
               <div class="row form-gorup mt-5">
                 <label for="thumbnail">프로필 수정</label>
-                <input id="thumbnail" class="form-control" />
+                <input id="thumbnail" name = "thumbnail" class="form-control" />
                 <small class="form-text text-muted"
                   >수정할 프로필 사진 URL을 입력하세요.</small
                 >

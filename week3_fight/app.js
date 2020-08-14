@@ -8,12 +8,12 @@ const MySQLStore = require("express-mysql-session")(session);
 const app = express();
 
 const store = new MySQLStore({
-  host: "host-ip",
-  port: "port-number",
-  user: "user-id",
-  password: "password",
-  database: "dbName",
-  clearExpired: true,
+  host: "127.0.0.1",
+  port: "3306",
+  user: "root",
+  password: "zxzx1306",
+  database: "test",
+  clearExpired: true
 });
 
 // model
@@ -35,7 +35,7 @@ app.use(
     secret: "dplandplan",
     resave: false,
     saveUninitialized: false,
-    store: store,
+    store: store
   })
 );
 
@@ -80,4 +80,4 @@ sequelize
   .then(() => {
     app.listen(3000);
   })
-  .then((err) => console.log(err));
+  .then(err => console.log(err));

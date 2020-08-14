@@ -12,11 +12,11 @@
           <h4><%= post.title %></h4>
         </div>
 
-        <div class="create-date">
+        <%= class="create-date">
           <%= post.createdAt.getFullYear() %> 년 <%= post.createdAt.getMonth()+1
           %> 월 <%= post.createdAt.getDate() %> 일 <%= post.createdAt.getHours()
           %>:<%= (""+post.createdAt.getMinutes()).padStart(2,'0') %>
-        </div>
+        </%=>
         <div class="author"><%= creator.name %></div>
         <% if (post.userId === user.id) { %>
         <form action="/delete-post/<%= post.id %>" method="POST">

@@ -5,7 +5,7 @@ const User = require("../models/user");
 
 exports.getHome = (req, res, next) => {
   res.render("auth/home", {
-    isLogin: false,
+    isLogin: false
   });
 };
 
@@ -16,8 +16,8 @@ exports.postLogin = async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: {
-        email,
-      },
+        email
+      }
     });
 
     if (!user) {
@@ -28,7 +28,7 @@ exports.postLogin = async (req, res, next) => {
 
     if (isMatch) {
       req.session.user = user;
-      return req.session.save((err) => {
+      return req.session.save(err => {
         console.log(err);
         res.redirect("/posts");
       });
@@ -41,6 +41,29 @@ exports.postLogin = async (req, res, next) => {
   }
 };
 
+exports.editThumbnail = async (req, res, next) => {
+  const { thumbnail } = req.body;
+  const userid = req.user.id;
+
+  try {
+    await user.createPost({ title, content });
+    const options = {
+      method: "post",
+      url: "http://api.adams.ai/updateThumbnail",
+      params: { userid, thumbnail }
+    };
+    const {
+      data: {
+        return_object: { Result: result }
+      }
+    } = await axios(options);
+    res.redirect("/posts");
+  } catch (err) {
+    console.log(err);
+    res.redirect("/posts");
+  }
+};
+
 exports.postSignup = async (req, res, next) => {
   const { name, email, password, schoolName, schoolType } = req.body;
 
@@ -48,14 +71,14 @@ exports.postSignup = async (req, res, next) => {
     let school = await School.findOne({
       where: {
         name: schoolName,
-        type: schoolType,
-      },
+        type: schoolType
+      }
     });
 
     if (!school) {
       school = new School({
         name: schoolName,
-        type: schoolType,
+        type: schoolType
       });
       await school.save();
     }
@@ -66,7 +89,7 @@ exports.postSignup = async (req, res, next) => {
       name,
       email,
       password: hashedPassword,
-      score: 0,
+      score: 0
     });
 
     res.redirect("/");
@@ -77,7 +100,7 @@ exports.postSignup = async (req, res, next) => {
 };
 
 exports.postLogout = (req, res, next) => {
-  req.session.destroy((err) => {
+  req.session.destroy(err => {
     console.log(err);
     res.redirect("/");
   });

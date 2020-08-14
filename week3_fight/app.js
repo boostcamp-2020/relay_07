@@ -37,7 +37,7 @@ app.use(
     secret: "dplandplan",
     resave: false,
     saveUninitialized: false,
-    store: store,
+    store: store
   })
 );
 
@@ -84,4 +84,4 @@ sequelize
   .then(() => {
     app.listen(3000);
   })
-  .then((err) => console.log(err));
+  .then(err => console.log(err));

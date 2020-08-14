@@ -1,36 +1,36 @@
 const User = require("../models/user");
 const Post = require("../models/post");
 
-const axios= require('axios');
+const axios = require("axios");
 
-const aggressiveEmotion = ['혐오','분노']
-const positiveEmotion   = ['기쁨','신뢰']
+const aggressiveEmotion = ["혐오", "분노"];
+const positiveEmotion = ["기쁨", "신뢰"];
 
 exports.getPosts = async (req, res, next) => {
   try {
-    let page = req.query.page || 0
+    let page = req.query.page || 0;
     const number_of_posts = 10;
-    const {count, rows} = await Post.findAndCountAll({
-      include:[{model:User,attributes:[]}],
-      attributes:['id','title','user.name'],
-      limit:number_of_posts,
-      offset:page*number_of_posts,
+    const { count, rows } = await Post.findAndCountAll({
+      include: [{ model: User, attributes: [] }],
+      attributes: ["id", "title", "user.name"],
+      limit: number_of_posts,
+      offset: page * number_of_posts,
       order: [["id", "DESC"]],
-      raw:true
-    })
+      raw: true
+    });
 
     res.render("post/posts", {
       user: req.user,
       pageNumber: page,
       isLogin: req.user,
-      posts:rows,
+      posts: rows,
       count,
       topUsers: req.topUsers,
-      topSchools: req.topSchools,
+      topSchools: req.topSchools
     });
   } catch (err) {
     console.log(err);
-    res.render("404",{isLogin: res.user });
+    res.render("404", { isLogin: res.user });
   }
 };
 
@@ -39,7 +39,7 @@ exports.getAddPost = (req, res, next) => {
     user: req.user,
     isLogin: req.user,
     topUsers: req.topUsers,
-    topSchools: req.topSchools,
+    topSchools: req.topSchools
   });
 };
 
@@ -52,12 +52,12 @@ exports.postAddPost = async (req, res, next) => {
     const options = {
       method: "get",
       url: "http://api.adams.ai/datamixiApi/omAnalysis",
-      params: { key: "6711351156271231323", query: title, type: "1" },
+      params: { key: "6711351156271231323", query: title, type: "1" }
     };
     const {
       data: {
-        return_object: { Result: result },
-      },
+        return_object: { Result: result }
+      }
     } = await axios(options);
 
     for (const [reliable, emotion] of result) {
@@ -77,6 +77,38 @@ exports.postAddPost = async (req, res, next) => {
   }
 };
 
+exports.updateThumbnail = async (req, res) => {
+  const { userId, newThumbnail } = req.body;
+  userId;
+  return res.json({ thumbnail: thumbnail });
+};
+// edit Thumbnail
+
+exports.editThumbnail = async (req, res, next) => {
+  const { userId, newThumbnail } = req.body;
+  const user = req.user;
+
+  try {
+    await user.createPost({ title, content });
+    const options = {
+      method: "post",
+      url: "http://api.adams.ai/updateThumbnail",
+      params: { userid: "", thumbnail: "1" }
+    };
+    const {
+      data: {
+        return_object: { Result: result }
+      }
+    } = await axios(options);
+    res.redirect("/posts");
+  } catch (err) {
+    console.log(err);
+    res.redirect("/posts");
+  }
+};
+
+// end edit Thumnnail
+
 exports.getPost = async (req, res, next) => {
   const { postId } = req.params;
   try {
@@ -89,7 +121,7 @@ exports.getPost = async (req, res, next) => {
       user: req.user,
       isLogin: req.user,
       topUsers: req.topUsers,
-      topSchools: req.topSchools,
+      topSchools: req.topSchools
     });
   } catch (err) {
     console.log(err);

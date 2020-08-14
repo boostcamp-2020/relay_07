@@ -17,9 +17,9 @@
   <div class="card">
     <% if(!user.thumbnailURL){ %>
     <img src="https://user-images.githubusercontent.com/42710591/89651430-e3997800-d8fe-11ea-8fc4-892c6fc429ab.JPG"
-      class="card-img-top" alt="유저 사진" />
+      class="card-img-top img-fluid" alt="유저 사진" />
     <%} else{ %>
-    <img src="<%= user.thumbnailURL %>" class="card-img-top" alt="유저 사진" />
+    <img src="<%= user.thumbnailURL %>" class="card-img-top img-fluid" alt="유저 사진" />
     <%}%>
     <div class="card-body text-center">
       <h5
@@ -69,13 +69,13 @@
           class="text-muted" onClick="closeModal()">
           &times;
         </button>
-        <form method="POST" action="/edit-profile">
+        <form method="POST" action="/edit-profile" encType="multipart/form-data">
           <div class="container text-left">
             <div class="row form-gorup mt-5">
               <label for="thumbnail">프로필 수정</label>
-              <input id="thumbnail" name="thumbnail" class="form-control" />
+              <input id="thumbnail" name="thumbnail" type="file" class="form-control" />
 
-              <small class="form-text text-muted">수정할 프로필 사진 URL을 입력하세요.</small>
+              <small class="form-text text-muted">수정할 프로필 사진을 올려주세요.</small>
             </div>
             <div class="row my-3 justify-content-end mr-1">
               <button type="submit" class="btn btn-primary btn-sm">

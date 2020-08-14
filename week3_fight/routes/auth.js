@@ -5,6 +5,9 @@ const router = express.Router();
 const authController = require("../controllers/auth");
 const authMiddleware = require("../middleware/is-auth");
 
+// var multer = require('multer'); // express에 multer모듈 적용 (for 파일업로드)
+// var upload = multer({ dest: 'uploads/' })
+
 // router.get("/", authController.getHome);
 router.get("/", authMiddleware.isLogin, authController.getHome);
 

@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const sequelize = require("../util/database");
+const { sequelize } = require("../util/database");
 const School = require("../models/school");
 
 exports.getBestScoreUsers = async (req, res, next) => {
@@ -13,7 +13,7 @@ exports.getBestScoreUsers = async (req, res, next) => {
       "schoolId",
       [sequelize.fn("sum", sequelize.col("score")), "totalScore"],
     ],
-    
+
     group: ["schoolId"],
     order: sequelize.literal("totalScore DESC"),
     limit: 3,

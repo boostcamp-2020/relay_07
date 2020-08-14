@@ -8,8 +8,12 @@ const authMiddleware = require("../middleware/is-auth");
 //3주
 router.post("/getUser", authMiddleware.isLogin, userController.getUser);
 
-router.post("/updateUser", authMiddleware.isLogin, userController.updateUser);
+router.post("/updateUser", authMiddleware.isLogin, userController.postUpdateUser);
 
-router.post("/edit-profile", authMiddleware.isLogin, userController.updateThumbnail);
+router.post(
+  "/edit-profile",
+  authMiddleware.isLogin,
+  userController.updateThumbnail
+);
 
 module.exports = router;

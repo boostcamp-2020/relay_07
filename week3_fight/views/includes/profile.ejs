@@ -15,48 +15,43 @@
 </script>
 <div class="col-2">
   <div class="card">
-    <%= if(!user.thumbnailURL){ %>
-    <img
-      src="https://user-images.githubusercontent.com/42710591/89651430-e3997800-d8fe-11ea-8fc4-892c6fc429ab.JPG"
-      class="card-img-top"
-      alt="유저 사진"
-    />
+    <% if(!user.thumbnailURL){ %>
+    <img src="https://user-images.githubusercontent.com/42710591/89651430-e3997800-d8fe-11ea-8fc4-892c6fc429ab.JPG"
+      class="card-img-top" alt="유저 사진" />
     <%} else{ %>
     <img src="<%= user.thumbnailURL %>" class="card-img-top" alt="유저 사진" />
     <%}%>
     <div class="card-body text-center">
       <h5
         class="card-title pl-2 <%= user.score > 15 ? 'text-primary' : user.score > -16 ? '' : 'text-danger' %>"
-        style="letter-spacing: 7px;"
-      >
-        <%= user.name %>
-      </h5>
-      <p class="card-text m-0" style="letter-spacing: 1px;">
-        <%= user.school.name %><%= user.school.type === "0" ? "초" :
+    style="letter-spacing: 7px;"
+    >
+    <%= user.name %>
+    </h5>
+    <p class="card-text m-0" style="letter-spacing: 1px;">
+      <%= user.school.name %><%= user.school.type === "0" ? "초" :
         user.school.type === "1" ? "중" : user.school.type === "2" ? "고" : "대"
         %><br />
-        <%= user.score %>점<br />
-      </p>
+      <%= user.score %>점<br />
+    </p>
 
-      <br />
-      <% if(user.score > -20){ %>
-      <div>
-        <a href="/add-post">
-          <button type="button" class="btn btn-primary">게시물 작성</button>
-        </a>
+    <br />
+    <% if(user.score > -20){ %>
+    <div>
+      <a href="/add-post">
+        <button type="button" class="btn btn-primary">게시물 작성</button>
+      </a>
+    </div>
+    <br />
+    <div>
+      <button type="button" class="btn btn-info" onClick="showModal()">
+        프로필 수정
+      </button>
+      <!-- 모달 -->
+      <div id="modalBackground"
+        style="position:fixed; z-index:10;display: none; background:black; width:200vw; height:200vh; opacity:0.6; transform : translate(-100vw, -100vh);">
       </div>
-      <br />
-      <div>
-        <button type="button" class="btn btn-info" onClick="showModal()">
-          프로필 수정
-        </button>
-        <!-- 모달 -->
-        <div
-          id="modalBackground"
-          style="position:fixed; z-index:10;display: none; background:black; width:200vw; height:200vh; opacity:0.6; transform : translate(-100vw, -100vh);"
-        ></div>
-        <div
-          style="position:fixed; 
+      <div style="position:fixed; 
             z-index: 1000;
             width:40%;
             height:30%;
@@ -68,40 +63,35 @@
             border-radius: 5px;
             padding-left : 30px;
             padding-right : 30px;
-            "
-          id="modal"
-        >
-          <button
-            style="position:absolute; width: 50px; height: 50px; right:0; top: 0; border: none; background: none; font-size: 25px;"
-            class="text-muted"
-            onClick="closeModal()"
-          >
-            &times;
-          </button>
-          <form method="POST" action="/edit-profile">
-            <div class="container text-left">
-              <div class="row form-gorup mt-5">
-                <label for="thumbnail">프로필 수정</label>
-                <input id="thumbnail" name = "thumbnail" class="form-control" />
-                <small class="form-text text-muted"
-                  >수정할 프로필 사진 URL을 입력하세요.</small
-                >
-              </div>
-              <div class="row my-3 justify-content-end mr-1">
-                <button type="submit" class="btn btn-primary btn-sm">
-                  수정하기
-                </button>
-              </div>
+            " id="modal">
+        <button
+          style="position:absolute; width: 50px; height: 50px; right:0; top: 0; border: none; background: none; font-size: 25px;"
+          class="text-muted" onClick="closeModal()">
+          &times;
+        </button>
+        <form method="POST" action="/edit-profile">
+          <div class="container text-left">
+            <div class="row form-gorup mt-5">
+              <label for="thumbnail">프로필 수정</label>
+              <input id="thumbnail" name="thumbnail" class="form-control" />
+
+              <small class="form-text text-muted">수정할 프로필 사진 URL을 입력하세요.</small>
             </div>
-          </form>
-        </div>
-        <!---->
+            <div class="row my-3 justify-content-end mr-1">
+              <button type="submit" class="btn btn-primary btn-sm">
+                수정하기
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <% }else{ %>
-      <button type="button" class="btn btn-primary" disabled="”disabled”">
-        불량 회원
-      </button>
-      <% } %>
+      <!---->
     </div>
+    <% }else{ %>
+    <button type="button" class="btn btn-primary" disabled="”disabled”">
+      불량 회원
+    </button>
+    <% } %>
   </div>
+</div>
 </div>

@@ -33,11 +33,12 @@
           <ul class="pagination d-flex align-items-center">
             <% if(+pageNumber !== 0){ %>
             <li class="page-item">
-              <a class="page-link" href="/posts?page=<%= Math.max(pageNumber-1, 0) %>"><</a>
+              <a class="page-link" href="/posts?page=<%= Math.max(pageNumber-1, 0) %>">
+                << /a>
             </li>
             <% } %>
             <% for(let i=0; i<count/10; i++){ %>
-              <li class="page-item"><a class="page-link" href= <%= "/posts?page="+i %>><%= i+1 %></a></li>
+            <li class="page-item"><a class="page-link" href=<%= "/posts?page="+i %>><%= i+1 %></a></li>
             <% } %>
             <% if(+pageNumber !== +Math.floor(count/10)){ %>
             <li class="page-item">

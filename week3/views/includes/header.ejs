@@ -1,0 +1,21 @@
+<header
+  class="row pt-5 pb-2 border-primary mb-4"
+  style="border-bottom: 14px solid;"
+>
+  <div class="col-1"></div>
+  <div class="col-10 pb-4 text-center">
+    <a href="/posts">
+      <img src="/img/logo.png" alt="logo" width="300" height="105" />
+    </a>
+  </div>
+
+  <div class="col-1 d-flex align-items-end">
+    <% if (isLogin) { %>
+    <form action="/logout" method="POST">
+      <button class="border-0 bg-white text-primary" type="submit">
+        <u style="font-size: 12px;">로그아웃</u>
+      </button>
+    </form>
+    <% } %>
+  </div>
+</header>

@@ -43,7 +43,7 @@
 			https://github.com/songys/Toxic_comment_data
 https://wikidocs.net/book/2155
 https://wikidocs.net/44249				
-https://api.openhangul.com/overview?m=sentiment https://brunch.co.kr/@mapthecity/25
+https://api.openhangul.com/overview?m=sentiment
 https://cyc1am3n.github.io/2018/11/10/classifying_korean_movie_review.html
 https://github.com/mrlee23/KoreanSentimentAnalyzer
 

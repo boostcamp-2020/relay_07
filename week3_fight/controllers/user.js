@@ -7,8 +7,8 @@ const AWS = require('aws-sdk');
 const fs = require('fs');
 const endpoint = new AWS.Endpoint('https://kr.object.ncloudstorage.com');
 const region = 'kr-standard';
-const access_key = 'OxzLSiVMnc7XeLWIaPNl'; //본인의 api 액세스 키
-const secret_key = '0PjANFs41zpT4NPASu6O75JxhF95i2FXiJCQqq8J'; //본인의 api 시크릿 키
+const access_key = 'API Access Key'; //본인의 api 액세스 키
+const secret_key = 'API Secret Key'; //본인의 api 시크릿 키
 
 const S3 = new AWS.S3({
   endpoint: endpoint,
@@ -65,7 +65,8 @@ exports.updateThumbnail = async (req, res) => {
 
 
     let object_name = Date.now()  + '.png';
-    let saveurl = 'http://heovyegsmorj4951114.cdn.ntruss.com/'+object_name+'?type=f&w=100&h=200&autorotate=false&faceopt=true&ttype=png&anilimit=1';
+    let naverCloudUrl = 'Naver Cloud CDN' // 네이버 클라우드 버킷 CDN
+    let saveurl = naverCloudUrl+object_name+'?type=f&w=100&h=200&autorotate=false&faceopt=true&ttype=png&anilimit=1';
 
     const userId = req.session.user.id;
     const thumbnail = saveurl;
@@ -75,7 +76,6 @@ exports.updateThumbnail = async (req, res) => {
     
     try {
         await sequelize.query(`UPDATE users SET thumbnailURL='${thumbnail}' WHERE id=${userId}`);
-        console.log("썸네일 변경!");
         
         alert('AI가 작업 중입니다. 혹시 올라가지 않을 시 다시 새로고침 부탁드려요 :\)')
         setTimeout(()=> { 

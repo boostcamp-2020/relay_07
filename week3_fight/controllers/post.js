@@ -43,7 +43,8 @@ exports.getAddPost = (req, res, next) => {
     user: req.user,
     isLogin: req.user,
     topUsers: req.topUsers,
-    topSchools: req.topSchools
+    topSchools: req.topSchools,
+    topFriends: req.topFriends
   });
 };
 
@@ -128,6 +129,7 @@ exports.getPost = async (req, res, next) => {
       topUsers: req.topUsers,
       topSchools: req.topSchools,
       comments,
+      topFriends: req.topFriends
     });
   } catch (err) {
     console.log(err);

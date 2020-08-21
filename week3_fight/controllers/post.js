@@ -1,10 +1,12 @@
 const User = require("../models/user");
 const Post = require("../models/post");
-
+const Comment = require("../models/comment");
+const FriendScore = require("../models/friendScore");
 const axios = require("axios");
 
 const aggressiveEmotion = ["혐오", "분노"];
 const positiveEmotion = ["기쁨", "신뢰"];
+
 
 exports.getPosts = async (req, res, next) => {
   try {
@@ -18,6 +20,7 @@ exports.getPosts = async (req, res, next) => {
       order: [["id", "DESC"]],
       raw: true
     });
+
 
     res.render("post/posts", {
       user: req.user,
@@ -115,14 +118,16 @@ exports.getPost = async (req, res, next) => {
   try {
     const post = await Post.findByPk(postId);
     const creator = await User.findByPk(post.userId);
-
+    const comments = await Comment.findAll({where : {post_id : postId}});
+    console.log(comments);
     res.render("post/post", {
       post,
       creator,
       user: req.user,
       isLogin: req.user,
       topUsers: req.topUsers,
-      topSchools: req.topSchools
+      topSchools: req.topSchools,
+      comments,
     });
   } catch (err) {
     console.log(err);
@@ -144,3 +149,37 @@ exports.postDeletePost = async (req, res, next) => {
     res.redirect("/posts");
   }
 };
+
+exports.addCommnet = async(req,res,next)=>{
+  const { postId } = req.params;
+  const {commentinput } = req.body;
+  const name = req.user['dataValues']['name'];
+  const friend_id = req.user['dataValues']['id'];
+  const post = await Post.findByPk(postId);
+  const host_id = post.userId;
+  
+  // 1. comment table에 insert
+  await Comment.create({
+    post_id : postId,
+    name : name,
+    content : commentinput
+  })
+  
+  // 2. friendScore에 존재하는지 확인
+  let friendScore;
+  friendScore = await FriendScore.findOne({where : {host_id : host_id, friend_id: friend_id}});
+  
+  if(friendScore) {  //  // 2-1. 존재 - update score++
+    await friendScore.update({host_id : host_id, friend_id : friend_id, score : friendScore.score + 1});
+    
+  } else {  // 2-2. 존재 X - insert score = 1
+    await FriendScore.create({
+      host_id : host_id,
+      friend_id : friend_id,
+      score : 1
+    })
+  }
+   res.redirect("/post/postId")
+  
+
+}

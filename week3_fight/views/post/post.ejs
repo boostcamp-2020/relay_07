@@ -27,6 +27,21 @@
         <div class="board-contents">
           <%= post.content %>
         </div>
+        <hr />
+        <div class="write-comments">
+          <form method = "POST" action = "/add-comment/<%= post.id %>">
+            <input type="textarea" style="width: 80%;" name="commentinput" placeholder="댓글을 입력해주세요"/>
+            <button type="submit">작성</button>
+          </form>
+        </div>
+        <hr />
+        <% comments.forEach((comment,idx) => { %>
+          <div class="board-comments">
+            <hr />
+            <p><span style="color: blue">작성자 : </span><%= comment.dataValues.name %></p>
+            <p><%= comment.dataValues.content %></p>
+          </div>
+        <% }) %>
       </div>
 
       <%- include('../includes/rank.ejs') %>

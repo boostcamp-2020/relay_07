@@ -36,4 +36,11 @@ router.post(
   postController.postDeletePost
 );
 
+router.post(
+  "/add-comment/:postId",
+  authMiddleware.isAuth,
+  postController.addCommnet
+);
+
+
 module.exports = router;

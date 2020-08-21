@@ -47,4 +47,27 @@
       <% }) %>
     </tbody>
   </table>
+  <p><b>친한 유저 랭킹</b></p>
+  <table class="table shadow-sm p-3 mb-5 bg-white rounded">
+    <thead>
+      <tr>
+        <th scope="col">이름</th>
+        <th scope="col">점수</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% topFriends.forEach((user,idx) => { %>
+      <tr>
+        <td>
+          <img
+            src="/img/<%= idx===0? 'gold-medal' : idx===1? 'silver-medal' : 'bronze-medal' %>.png"
+            alt="<%= idx===0? 'gold' : idx===1? 'silver' : 'bronze' %>"
+          />
+          <%= user.friend_name %>
+        </td>
+        <td><%= user.score %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
 </div>

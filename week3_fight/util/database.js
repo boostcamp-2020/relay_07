@@ -16,4 +16,3 @@ const sequelize = new Sequelize("mydb", "root", "1234", {
 });
 
 module.exports = { sequelize, DB_INFO };
-© 2020 GitHub, Inc.

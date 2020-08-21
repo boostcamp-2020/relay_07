@@ -26,7 +26,8 @@ exports.getPosts = async (req, res, next) => {
       posts: rows,
       count,
       topUsers: req.topUsers,
-      topSchools: req.topSchools
+      topSchools: req.topSchools,
+      topFriends: req.topFriends
     });
   } catch (err) {
     console.log(err);

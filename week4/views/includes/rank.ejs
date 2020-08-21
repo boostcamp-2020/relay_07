@@ -1,0 +1,73 @@
+<div class="col-2 text-center" style="font-size:14px">
+  <p><b>친절 학교 랭킹</b></p>
+  <table class="table shadow-sm p-3 mb-5 bg-white rounded">
+    <thead>
+      <tr>
+        <th scope="col">학교</th>
+        <th scope="col">점수</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% topSchools.forEach((school,idx) => { %>
+      <tr>
+        <td>
+          <img
+            src="/img/<%= idx===0? 'gold-medal' : idx===1? 'silver-medal' : 'bronze-medal' %>.png"
+            alt="<%= idx===0? 'gold' : idx===1? 'silver' : 'bronze' %>"
+          />
+          <%= school.schoolName %><%= school.schoolType === "0" ? "초" :
+          school.schoolType === "1" ? "중" : school.schoolType === "2" ? "고" :
+          "대" %>
+        </td>
+        <td><%= school.dataValues.totalScore %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <p><b>친절 유저 랭킹</b></p>
+  <table class="table shadow-sm p-3 mb-5 bg-white rounded">
+    <thead>
+      <tr>
+        <th scope="col">이름</th>
+        <th scope="col">점수</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% topUsers.forEach((user,idx) => { %>
+      <tr>
+        <td>
+          <img
+            src="/img/<%= idx===0? 'gold-medal' : idx===1? 'silver-medal' : 'bronze-medal' %>.png"
+            alt="<%= idx===0? 'gold' : idx===1? 'silver' : 'bronze' %>"
+          />
+          <%= user.name %>
+        </td>
+        <td><%= user.score %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <p><b>친한 유저 랭킹</b></p>
+  <table class="table shadow-sm p-3 mb-5 bg-white rounded">
+    <thead>
+      <tr>
+        <th scope="col">이름</th>
+        <th scope="col">점수</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% topFriends.forEach((user,idx) => { %>
+      <tr>
+        <td>
+          <img
+            src="/img/<%= idx===0? 'gold-medal' : idx===1? 'silver-medal' : 'bronze-medal' %>.png"
+            alt="<%= idx===0? 'gold' : idx===1? 'silver' : 'bronze' %>"
+          />
+          <%= user.friend_name %>
+        </td>
+        <td><%= user.score %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

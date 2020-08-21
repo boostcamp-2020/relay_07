@@ -22,6 +22,8 @@ const store = new MySQLStore(DB_INFO);
 const User = require("./models/user");
 const Post = require("./models/post");
 const School = require("./models/school");
+const Comment = require("./models/comment");
+const FriendScore = require("./models/friendScore");
 
 // template engine setting ~ ejs
 app.set("view engine", "ejs");
